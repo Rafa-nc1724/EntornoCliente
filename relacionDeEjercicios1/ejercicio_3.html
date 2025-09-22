@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercico_3</title>
+</head>
+
+<body>
+    <label for="">Introduce el primer lado del triángulo </label>
+    <input type="number" id="lado_1">
+    <br>
+    <label for="">Introduce el angulo lado del triángulo </label>
+    <input type="number" id="angulo_1">
+    <br>
+    <br>
+    <label for="">Introduce el segundo lado del triángulo </label>
+    <input type="number" id="lado_2">
+    <br>
+    <label for="">Introduce el angulo lado del triángulo </label>
+    <input type="number" id="angulo_2">
+    <br>
+    <br>
+    <label for="">Introduce el tercer lado del triángulo </label>
+    <input type="number" id="lado_3">
+    <br>
+    <label for="">Introduce el angulo lado del triángulo </label>
+    <input type="number" id="angulo_3">
+    <br>
+    <br>
+    ¿Que triangulo es? <input type="button" value="mostrar" onclick="respuesta()">
+    <script>
+        function respuesta() {
+            //Lados
+            var l1 = document.getElementById("lado_1").value;
+            var l2 = document.getElementById("lado_2").value;
+            var l3 = document.getElementById("lado_3").value;
+            //Angulos
+            var a1 = document.getElementById("angulo_1").value;
+            var a2 = document.getElementById("angulo_2").value;
+            var a3 = document.getElementById("angulo_3").value;
+
+            if ((l1 == l2 & l1 == l3 & l2 == l3)||(a1==60 & a2==60 & a3==60)||(a1)) {
+                alert("El triangulo es equilatero");
+            } else if((l1 != l2 & l1 != l3 & l2 != l3)||(a1+a2+a3==180)){
+                alert("El triangulo es escaleno");
+            } else{
+                alert("El triangulo es isosceles");
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
