@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Títulos con H1 a H6</title>
+</head>
+<body>
+  <div id="contenedor"></div>
+
+  <script>
+    // Array con los textos
+    const titulos = ["TITULO 1", "TITULO 2", "TITULO 3", "TITULO 4", "TITULO 5", "TITULO 6"];
+
+    // Contenedor donde se agregarán los títulos
+    const contenedor = document.getElementById("contenedor");
+
+    // Bucle para crear cada título con su etiqueta correspondiente
+    for (let i = 0; i < titulos.length; i++) {
+      const h = document.createElement("h" + (i + 1)); // h1, h2, ..., h6
+      h.textContent = titulos[i];
+      contenedor.appendChild(h);
+    }
+  </script>
+</body>
+</html>

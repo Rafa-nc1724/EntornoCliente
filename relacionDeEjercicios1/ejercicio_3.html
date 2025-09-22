@@ -41,12 +41,69 @@
             var a2 = document.getElementById("angulo_2").value;
             var a3 = document.getElementById("angulo_3").value;
 
-            if ((l1 == l2 & l1 == l3 & l2 == l3)||(a1==60 & a2==60 & a3==60)||(a1)) {
-                alert("El triangulo es equilatero");
-            } else if((l1 != l2 & l1 != l3 & l2 != l3)||(a1+a2+a3==180)){
-                alert("El triangulo es escaleno");
-            } else{
-                alert("El triangulo es isosceles");
+            if (a1 + a2 + a3 != 180) {
+                alert("Esto no es un triangulo");
+            } else if (a1 >= 91 & a2 >= 91 & a3 >= 91) {   //acutangulo
+                alert("Un triangulo no puede tener los tres angulos obstusos")
+            } else if (a1 <= 90 & a2 <= 90 & a3 <= 90) {
+
+                if ((l1 == l2 & l1 == l3 & l2 == l3) || (a1 == 60 & a2 == 60 & a3 == 60) || (a1)) {
+                    alert("El triangulo es equilatero acutangulo");
+                } else if ((l1 != l2 & l1 != l3 & l2 != l3) || (a1 + a2 + a3 == 180)) {
+                    alert("El triangulo es escaleno acutangulo");
+                } else {
+                    alert("El triangulo es isosceles acutangulo");
+                }
+
+            } else if (a1 == 90 || a2 == 90 || a3 == 90) {   //rectangulo
+
+                if (a1 == 90 & a2 >= 90 || a3 >= 90) {
+                    alert("Un triangulo no puede tener dos angulos a 90 o uno a 90 y otro superior");
+                } else if (l1 != l2 & l1 != l3 & l2 != l3) {
+                    alert("El triangulo es rectangulo escaleno");
+                } else {
+                    alert("El triangulo es rectangulo isosceles");
+                }
+                if (a3 == 90 & a1 >= 90 || a2 >= 90) {
+                    alert("Un triangulo no puede tener dos angulos a 90 o uno a 90 y otro superior");
+                } else if (l1 != l2 & l1 != l3 & l2 != l3) {
+                    alert("El triangulo es rectangulo escaleno");
+                } else {
+                    alert("El triangulo es rectangulo isosceles");
+                }
+                if (a2 == 90 & a3 >= 90 || a1 >= 90) {
+                    alert("Un triangulo no puede tener dos angulos a 90 o uno a 90 y otro superior");
+                } else if (l1 != l2 & l1 != l3 & l2 != l3) {
+                    alert("El triangulo es rectangulo escaleno");
+                } else {
+                    alert("El triangulo es rectangulo isosceles");
+                }
+
+
+            } else if (a1 > 90 || a2 > 90 || a3 > 90) {   //obstusangulo
+
+                if (a1 > 90 & a2 >= 90 || a3 >= 90) {
+                    alert("Un triangulo no puede tener dos angulos de más de 90 o uno a 90 y otro superior");
+                } else if (l1 != l2 & l1 != l3 & l2 != l3) {
+                    alert("El triangulo es obtusángulo escaleno");
+                } else {
+                    alert("El triangulo es obtusángulo isosceles");
+                }
+                if (a3 > 90 || a1 > 90 || a2 > 90) {
+                    alert("Un triangulo no puede tener dos angulos de más de 90 o uno a 90 y otro superior");
+                } else if (l1 != l2 & l1 != l3 & l2 != l3) {
+                    alert("El triangulo es obtusángulo escaleno");
+                } else {
+                    alert("El triangulo es obtusángulo isosceles");
+                }
+                if (a2 > 90 || a3 > 90 || a1 > 90) {
+                    alert("Un triangulo no puede tener dos angulos de más de 90 o uno a 90 y otro superior");
+                } else if (l1 != l2 & l1 != l3 & l2 != l3) {
+                    alert("El triangulo es obtusángulo escaleno");
+                } else {
+                    alert("El triangulo es obtusángulo isosceles");
+                }
+
             }
         }
 

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Clasificador de Triángulos</title>
+</head>
+<body>
+  <h2>Introduce los lados y ángulos del triángulo</h2>
+
+  <label>Lado 1: </label>
+  <input type="number" id="lado_1"><br><br>
+  <label>Ángulo 1 (grados): </label>
+  <input type="number" id="angulo_1"><br><br>
+
+  <label>Lado 2: </label>
+  <input type="number" id="lado_2"><br><br>
+  <label>Ángulo 2 (grados): </label>
+  <input type="number" id="angulo_2"><br><br>
+
+  <label>Lado 3: </label>
+  <input type="number" id="lado_3"><br><br>
+  <label>Ángulo 3 (grados): </label>
+  <input type="number" id="angulo_3"><br><br>
+
+  <input type="button" value="Mostrar" onclick="clasificarTriangulo()">
+
+  <script>
+    function clasificarTriangulo() {
+      // Leer lados
+      let l1 = parseFloat(document.getElementById("lado_1").value);
+      let l2 = parseFloat(document.getElementById("lado_2").value);
+      let l3 = parseFloat(document.getElementById("lado_3").value);
+
+      // Leer ángulos
+      let a1 = parseFloat(document.getElementById("angulo_1").value);
+      let a2 = parseFloat(document.getElementById("angulo_2").value);
+      let a3 = parseFloat(document.getElementById("angulo_3").value);
+
+      // Validar existencia del triángulo con lados
+      if (l1 + l2 <= l3 || l1 + l3 <= l2 || l2 + l3 <= l1) {
+        alert("Los lados ingresados no forman un triángulo");
+        return;
+      }
+
+      // Validar existencia con ángulos
+      let sumaAngulos = a1 + a2 + a3;
+      if (sumaAngulos !== 180 || a1 <= 0 || a2 <= 0 || a3 <= 0) {
+        alert("Los ángulos ingresados no forman un triángulo válido");
+        return;
+      }
+
+      // Clasificación por lados
+      let tipoLados = "";
+      if (l1 === l2 && l2 === l3) {
+        tipoLados = "equilátero";
+      } else if (l1 === l2 || l1 === l3 || l2 === l3) {
+        tipoLados = "isósceles";
+      } else {
+        tipoLados = "escaleno";
+      }
+
+      // Clasificación por ángulos
+      let tipoAngulos = "";
+      if (a1 === 90 || a2 === 90 || a3 === 90) {
+        tipoAngulos = "rectángulo";
+      } else if (a1 > 90 || a2 > 90 || a3 > 90) {
+        tipoAngulos = "obtusángulo";
+      } else {
+        tipoAngulos = "acutángulo";
+      }
+
+      alert(`El triángulo es ${tipoLados} y ${tipoAngulos}`);
+    }
+  </script>
+</body>
+</html>
