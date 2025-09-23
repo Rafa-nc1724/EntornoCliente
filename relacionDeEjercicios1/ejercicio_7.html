@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio_7</title>
+</head>
+
+<body>
+    <label for="">Introduce un número</label>
+    <input type="number" id="n">
+    <input type="button" value="Pulsame" onclick="parImpar()">
+    <p id="p"></p>
+
+    <script>
+        let p = document.getElementById("p");
+        function parImpar() {
+            let numero = document.getElementById("n").value;
+
+            if ((numero > 10) && (numero % 2 == 0)) {
+                p.innerHTML = "NÚMERO CORRECTO";
+            } else {
+                p.innerHTML = "NÚMERO INCORRECTO"
+            }
+        }
+    </script>
+</body>
+
+</html>
