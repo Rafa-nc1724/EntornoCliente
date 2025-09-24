@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_9</title>
+</head>
+<body>
+    <div>
+        <h2>Acierta el número</h2>
+        <p>Introduce un número entre 1 y 100</p>
+        <input type="number" id="num">
+        <input type="button" value="Adivinar" onclick="adivinaNumero()">
+        <p id="message"></p>
+        <p id="intentos"></p>
+    </div>
+
+    <script>
+        let message = document.getElementById("message");
+        let intentos = document.getElementById("intentos");
+        let n_max = 100;
+        let n_min = 1;
+        let intent = 0;
+        const maxIntentos = 10;
+
+        let n_rand = numeroAleatorio(1, 100);
+        console.log("Número secreto:", n_rand);
+
+        function adivinaNumero() {
+            let num = Number(document.getElementById("num").value);
+            intent++;
+
+            if (num < 1 || num > 100) {
+                message.innerHTML = "El número tiene que ser entre 1 y 100";
+            } else if (num === n_rand) {
+                message.innerHTML = `¡ENHORABUENA! HAS GANADO con ${intent} intentos`;
+                intent = maxIntentos;
+            } else if (num > n_rand) {
+                n_max = num;
+                message.innerHTML = `El número es entre ${n_min} y ${n_max}`;
+            } else if (num < n_rand) {
+                n_min = num;
+                message.innerHTML = `El número es entre ${n_min} y ${n_max}`;
+            }
+
+            intentos.innerHTML = `Intento ${intent} de ${maxIntentos}`;
+
+            if (intent >= maxIntentos && num !== n_rand) {
+                message.innerHTML = `HAS PERDIDO. El número era ${n_rand}`;
+            }
+        }
+
+        function numeroAleatorio(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    </script>
+</body>
+</html>

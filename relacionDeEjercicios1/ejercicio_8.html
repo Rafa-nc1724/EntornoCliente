@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio_8</title>
+</head>
+
+<body>
+    <input type="button" value="Abrir Pestaña" onclick="abrirPestania()">
+    <input type="button" value="Cerrar Pestaña" onclick="cerrarPestania()">
+    <script>
+        let pestania;
+        function abrirPestania() {
+            pestania = window.open("https://www.google.com/?hl=es&safe=active&ssui=on");
+        }
+        function cerrarPestania() {
+            if (pestania && !pestania.closed){
+                pestania.close();
+            }
+        }
+    </script>
+</body>
+
+</html>

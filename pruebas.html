@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruebas</title>
+</head>
+
+<body>
+    <script>
+        /**
+        * Estas son distintas formas de crear una cadena
+        * 
+         **/
+        let nombre = "Miguel";
+        let nombre2 = new String('Rafa');
+        console.log(nombre);
+        console.log(nombre2);
+        console.log(nombre2.toLowerCase());
+        console.log(nombre.toLowerCase());
+        let vector = Array(5).fill([4, "c", 2]);//rellena un array con arrays
+        console.log(vector);
+        //
+        let vector3 = Array.of("A", "B", "C");
+        //cuidado con las comillas invertidas para usar interpolación
+        vector3.forEach(function (el, index) {
+            document.write(`<li id='${index}'>${el}</li>`);
+        });
+        /**let lista= `<ul>
+            <li>Miguel</li>
+            <li>Pepe</li>
+            </ul>`
+        console.log(lista);
+        **/
+    </script>
+</body>
+
+</html>
