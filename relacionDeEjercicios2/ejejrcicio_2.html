@@ -14,39 +14,49 @@
     <h2>Introduce 10 números uno por uno</h2>
     <input type="number" id="num">
     <button onclick="ingresaNumeros()">Ingresar número</button>
-    
+
     <button onclick="mostrarElementos()">Mostrar Array</button>
-    
+
     <button onclick="sumarNumeros()">Sumar números</button>
     <p id="array"></p>
-    <p id="resultado"></p>
+    <p id="result"></p>
     <script>
         let array_num = [];
         let p = document.getElementById("array");
-        
+        let result = document.getElementById("result");
+
 
         function ingresaNumeros() {
-            
-            if(array_num.length<10){
-                let num=document.getElementById("num").value;
+
+            if (array_num.length < 10) {
+                let num = document.getElementById("num").value;
                 array_num.push(num);
-            }else{
+            } else {
                 p.innerHTML = 'No puedes ingresar más números';
             }
         }
-        
-        function mostrarElementos(){
-           
-            if(array_num.length<10){
-                //console.log("hola");
-                p.innerHTML=`Aun no se pueden mostrar quedan (${10-array_num.length}) números que ingresar`;
-            }else{
+
+        function mostrarElementos() {
+
+            if (array_num.length < 10) {
+                p.innerHTML = `Aun no se pueden mostrar quedan (${10 - array_num.length}) números que ingresar`;
+            } else {
                 p.innerHTML = array_num;
             }
         }
 
-        function sumarNumeros(){
-            for()
+        function sumarNumeros() {
+            let suma = 0;
+            if (array_num.length < 10) {
+                p.innerHTML = `Aun no se pueden mostrar quedan (${10 - array_num.length}) números que ingresar`;
+            } else {
+                for (let i = 0; i < array_num.length; i++) {
+                    suma += Number(array_num[i]);
+                    result.innerHTML = `La suma de los números del array es: ${suma}`;
+                    console.log(suma);
+                }
+            }
+
         }
     </script>
 </body>
