@@ -13,7 +13,9 @@
     <script>
         let pestania;
         function abrirPestania() {
-            pestania = window.open("https://www.google.com/?hl=es&safe=active&ssui=on");
+            //pestania = window.open("https://www.google.com/?hl=es&safe=active&ssui=on");solo funciona en Safari
+            pestania=window.open();//funciona en cualquier navegador
+            console.log(pestania);
         }
         function cerrarPestania() {
             if (pestania && !pestania.closed){
