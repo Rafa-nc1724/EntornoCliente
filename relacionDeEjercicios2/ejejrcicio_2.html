@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_2</title>
+</head>
+
+<body>
+    <h3>Hacer un programa que nos pida 10 números y posteriormente que los muestre
+        y muestre la suma de dichos elementos.
+    </h3>
+    <h2>Introduce 10 números uno por uno</h2>
+    <input type="number" id="num">
+    <button onclick="ingresaNumeros()">Ingresar número</button>
+    
+    <button onclick="mostrarElementos()">Mostrar Array</button>
+    
+    <button onclick="sumarNumeros()">Sumar números</button>
+    <p id="array"></p>
+    <p id="resultado"></p>
+    <script>
+        let array_num = [];
+        let p = document.getElementById("array");
+        
+
+        function ingresaNumeros() {
+            
+            if(array_num.length<10){
+                let num=document.getElementById("num").value;
+                array_num.push(num);
+            }else{
+                p.innerHTML = 'No puedes ingresar más números';
+            }
+        }
+        
+        function mostrarElementos(){
+           
+            if(array_num.length<10){
+                //console.log("hola");
+                p.innerHTML=`Aun no se pueden mostrar quedan (${10-array_num.length}) números que ingresar`;
+            }else{
+                p.innerHTML = array_num;
+            }
+        }
+
+        function sumarNumeros(){
+            for()
+        }
+    </script>
+</body>
+
+</html>
