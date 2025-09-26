@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_3</title>
+</head>
+
+<body>
+    <h2>Programa que calcula y almacene en un array todos los múltiplos de 11 menores de 3000,
+        los muestre y muestre la suma de todos ellos.</h2>
+    <button onclick="multiplos()">Mostrar</button>
+    <p id="multiplos"></p>
+    <br>
+    <p id="result"></p>
+    <br>
+    <button onclick="mostrarArray()">Mostrar Array</button>
+    <script>
+        let p = document.getElementById("multiplos");
+        let r = document.getElementById("result");
+        let a = document.getElementById("array");
+        let n = 11;
+        let array_num = [];
+        let n_actual = 0;
+
+        function multiplos() {
+            let result = 0;
+
+
+            for (let i = 1; n * i < 3000; i++) {
+                n_actual = (n * i);
+                p.innerHTML += `${n} x ${i} = ${n_actual} <br>`;
+                array_num.push(n_actual);
+                result += n_actual;
+            }
+
+            r.innerHTML = `El resultado de sumar todos los números es: ${result}`;
+        }
+
+        function mostrarArray() {
+            if (array_num.length > 1) {
+                alert(array_num.join(", "));
+            }
+
+        }
+    </script>
+</body>
+
+</html>

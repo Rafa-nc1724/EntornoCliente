@@ -51,12 +51,11 @@
                 p.innerHTML = `Aun no se pueden mostrar quedan (${10 - array_num.length}) números que ingresar`;
             } else {
                 for (let i = 0; i < array_num.length; i++) {
-                    suma += Number(array_num[i]);
+                    suma += parseInt(array_num[i]);
                     result.innerHTML = `La suma de los números del array es: ${suma}`;
                     console.log(suma);
                 }
             }
-
         }
     </script>
 </body>
