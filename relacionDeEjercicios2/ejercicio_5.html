@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_5</title>
+</head>
+
+<body>
+    <h2>
+        Sabiendo la letra de un Documento Nacional de Identidad (DNI) se obtiene del resto de la división entera
+        del número de DNI entre 23, y accediendo con ese resto a la posición del siguiente array de letras
+        (comenzando en la posición 0):
+        <p>letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L',
+            'C', 'K', 'E', 'T'];</p>
+        <p>a) Pedir un número de DNI al usuario y calcular su letra.</p>
+        <p>b) Pedir al usuario un DNI con letra y comprobar si ese DNI puede ser correcto (letra correcta).</p>
+    </h2>
+    <br>
+    <h3>Introduce número del DNI sin letra</h3>
+    <input type="number" id="dni">
+    <button onclick="calculaDni()">Mostrar</button>
+    <br>
+    <h3>Introduce un DNI para comprobarlo</h3>
+    <input type="text" id="comprueba_Dni">
+    <button onclick="compruebaDNI()">Comprobar DNI</button>
+    <script>
+        var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+
+        function calculaDni() {
+
+            let numero = parseInt(document.getElementById("dni").value);
+
+            if (isNaN(numero) || numero < 0 || numero > 99999999) {
+                alert("Número de DNI inválido.");
+                return;
+            }
+
+            let letra = letras[numero % 23];
+            alert(`El DNI completo es: ${numero}${letra}`);
+        }
+
+        function compruebaDNI() {
+            let dni = document.getElementById("comprueba_Dni").value.trim();
+
+            let numero = parseInt(dni.slice(0, -1));//Elimino la letra y me quedo con el número
+            let letra = dni.slice(-1).toUpperCase();//cojo solamente la letra del Dni
+
+            if (isNaN(numero) || numero < 0 || numero > 99999999) {
+                alert("Formato de DNI inválido.");
+                return;
+            }
+
+            let letraCorrecta = letras[numero % 23];
+
+            if (letra === letraCorrecta) {
+                alert(`✅ El DNI ${dni} es CORRECTO.`);
+            } else {
+                alert(`❌ El DNI ${dni} es INCORRECTO. La letra debería ser ${letraCorrecta}.`);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

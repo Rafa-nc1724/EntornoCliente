@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_7</title>
+</head>
+
+<body>
+    <h2>7) Definir una función que compruebe si la cadena de texto pasada como parámetro está formada sólo por
+        mayúsculas, sólo por minúsculas o por una mezcla de ambas</h2>
+        <input type="text" id="texto">
+        <button onclick="comprobarMayusMinus()">Mostrar</button>
+        <p id="result"></p>
+    <script>
+        let p=document.getElementById("result");
+        function comprobarMayusMinus() {
+            let cadena=document.getElementById("texto").value;
+            
+            if (cadena === cadena.toUpperCase()) {
+                p.innerHTML = "La cadena está formada solo por MAYÚSCULAS.";
+            } else if (cadena === cadena.toLowerCase()) {
+                p.innerHTML = "La cadena está formada solo por minúsculas.";
+            } else {
+                p.innerHTML = "La cadena está formada por una mezcla de mayúsculas y minúsculas.";
+            }
+        }
+    </script>
+</body>
+
+</html>

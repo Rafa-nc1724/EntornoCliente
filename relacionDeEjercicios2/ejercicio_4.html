@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_4</title>
+</head>
+
+<body>
+    <h2>A partir del siguiente array que se proporciona:
+        <p>var array = [6, "pepe", 2, “juan”];</p>
+        <p>Determinar cuál de los dos elementos de texto es mayor</p>
+        <p>Determinar el resultado de las 4 operaciones básicas matemáticas con los dos elementos numéricos</p>
+    </h2>
+
+    <button onclick="mostrar()">Mostrar</button>
+
+    <p id="resultado_texto"></p>
+    <p id="resultado_n"></p>
+
+    <script>
+        function mostrar() {
+
+            let p_text = document.getElementById("resultado_texto");
+            let p_num = document.getElementById("resultado_n");
+
+            var array = [6, "pepe", 2, "juan"];
+
+            let num_1 = array[0];
+            let text_1 = array[1];
+            let num_2 = array[2];
+            let text_2 = array[3];
+
+            if (text_1 > text_2) {
+                p_text.innerHTML = `${text_1} es mayor a ${text_2}.`;
+            } else if (text_1 < text_2) {
+                p_text.innerHTML = `${text_2} es mayor a ${text_1}.`;
+            } else {
+                p_text.innerHTML = `${text_1} y ${text_2} son iguales.`;
+            }
+
+            p_num.innerHTML = `${num_1} + ${num_2} = ${num_1 + num_2} <br>
+                                ${num_1} - ${num_2} = ${num_1 - num_2} <br>
+                                ${num_1} * ${num_2} = ${num_1 * num_2} <br>
+                                ${num_1} / ${num_2} = ${num_1 / num_2}`;
+
+        }
+    </script>
+</body>
+
+</html>

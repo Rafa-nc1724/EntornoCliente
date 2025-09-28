@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_6</title>
+</head>
+
+<body>
+    <h2>
+        6) Definir una función que calcule el menor de tres números pasados como parámetro.
+    </h2>
+
+    <label for="">Introduce un número</label>
+    <input type="number" id="n_1">
+
+    <label for="">Introduce un número</label>
+    <input type="number" id="n_2">
+
+    <label for="">Introduce un número</label>
+    <input type="number" id="n_3">
+
+    <br>
+
+    <button onclick="calcular()">¿Cual es el menor?</button>
+
+    <p id="result"></p>
+    <script>
+        let p = document.getElementById("result");
+
+        function calcular() {
+
+            let n_1 = parseInt(document.getElementById("n_1").value);
+            let n_2 = parseInt(document.getElementById("n_2").value);
+            let n_3 = parseInt(document.getElementById("n_3").value);
+
+            if (n_1 < n_2 & n_1 < n_3) {
+                p.innerHTML= `${n_1} es el menor`;
+            }else if(n_2<n_1 & n_2<n_3){
+                p.innerHTML= `${n_2} es el menor`;
+            }else{
+                p.innerHTML= `${n_3} es el menor`;
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
