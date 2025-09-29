@@ -12,9 +12,26 @@
     <h2>Definir una función que compruebe si la cadena de texto que se le pasa como parámetro es un palíndromo,
         es decir, si se lee de la misma forma desde la izquierda y desde la derecha.
         Ejemplo de palíndromo: "Dabale arroz a la zorra el abad".</h2>
-
+    <input type="text" id="texto" placeholder="Escriba una frase">
+    <button onclick="esPalindromo()">Comprobar</button>
+    <p id="result"></p>
     <script>
+        let p = document.getElementById("result");
 
+        function esPalindromo() {
+            let cadena_original = document.getElementById("texto").value;
+            //convierto a minusculas y quitamos espacios y caracteres raros
+            let cadena_formateada = cadena_original.toLowerCase().replace(/[^a-záéíóúüñ]/g, "");
+            //invertimos la cadena
+            let cadena_invertida = cadena_formateada.split("").reverse().join("");
+
+            if (cadena_invertida === cadena_formateada) {
+                p.innerHTML = `La cadena es un palíndromo`;
+            } else {
+                p.innerHTML = `La cadena no es un palíndromo`;
+            }
+
+        }
     </script>
 </body>
 
