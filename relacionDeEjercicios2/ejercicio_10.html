@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_10</title>
+</head>
+
+<body>
+    <h2>10) Crear un mapa con los número y meses del año y realizar las siguientes tareas con dicho mapa:</h2>
+    <p>
+        a) Eliminar el mes de mayo (y comprobar)
+        <br>b) Añadir un supuesto mes llamado “NuevoMes” (y comprobar)
+        <br>c) Comprobar si existen los meses de Mayo y Junio
+        <br>d) Convertir el mapa en el array llamado arraymeses.
+        <br>e) Eliminar del array el mes de Enero y comprobar qué pasa tanto en el array como en el mapa.
+    </p>
+    <p>====================================================================================================</p>
+    <p id="mapa"></p>
+    <p>a)=============================================</p>
+    <p id="a"></p>
+    <p>b)=============================================</p>
+    <p id="b"></p>
+    <p>c)=============================================</p>
+    <p id="c"></p>
+    <p id="c2"></p>
+    <p>d)=============================================</p>
+    <p id="d"></p>
+    <p>e)=============================================</p>
+    <p id="e"></p>
+    <p id="e2"></p>
+    <script>
+        let p_mapa = document.getElementById("mapa");
+        let pa = document.getElementById("a");
+        let pb = document.getElementById("b");
+        let pc = document.getElementById("c");
+        let pc2 = document.getElementById("c2");
+        let pd = document.getElementById("d");
+        let pe = document.getElementById("e");
+        let pe2 = document.getElementById("e2");
+        //------------------------- Creo el Mapa
+        const meses = new Map([
+            [1, "Enero"], [2, "Febrero"], [3, "Marzo"],
+            [4, "Abril"], [5, "Mayo"], [6, "Junio"],
+            [7, "Julio"], [8, "Agosto"], [9, "Septiembre"],
+            [10, "Octubre"], [11, "Nobiembre"], [12, "Diciembre"]
+        ]);
+        //------------------------- Mostrar el Mapa
+        for (const element of meses) {
+            p_mapa.innerHTML += `[${element}] `;
+        }
+        //-------------------------a)
+        //------------------------- Elimino Mayo
+        meses.delete(5);
+        //------------------------- Mostrar el Mapa de nuevo
+        for (const element of meses) {
+            pa.innerHTML += `[${element}] `;
+        }
+        //------------------------- Mostrar el Mapa
+        //-------------------------b)
+        //------------------------- Metemos un núevo mes
+        meses.set(5, "NuevoMes");
+        //------------------------- Mostrar el Mapa
+        for (const element of meses) {
+            pb.innerHTML += `[${element}] `;
+        }
+        //-------------------------c)
+
+        meses.forEach((valor, clave) => {
+            if (valor === "Mayo") {
+                pc.innerHTML = `Mayo existe`;
+            } else {
+                pc.innerHTML = `Mayo no existe`;
+            }
+        });
+
+        if (meses.has(6)) {
+            pc2.innerHTML = `Junio existe`;
+        } else {
+            pc2.innerHTML = `Junio no existe`;
+        }
+        //-------------------------- d)
+        //-------------------------- conviertp el mapa en un array
+        let arraymeses = Array.from(meses);
+        pd.innerHTML = `${arraymeses}`;
+        //-------------------------- e)
+        //-------------------------- elimino enero
+        arraymeses=arraymeses.filter(([clave, valor]) => valor !="Enero");
+
+        meses.forEach((valor, clave) => {
+            if (valor === "Enero") {
+                meses.delete(clave);
+            }
+        });
+
+        // mostrar de nuevo el mapa
+        for (const element of meses) {
+            pe.innerHTML += `[${element}] `;
+        }
+
+        for(let i =0; i<arraymeses.length; i++){
+            pe2.innerHTML +=`${arraymeses[i]}`;
+        }
+
+        
+
+    </script>
+</body>
+
+</html>

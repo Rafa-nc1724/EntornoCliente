@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_9</title>
+</head>
+
+<body>
+    <h2>9) Crear un conjunto con los doce meses del año y realizar las siguientes tareas con dicho conjunto:
+    </h2>
+    <p>a) Eliminar el mes de mayo (y comprobar)
+        <br>b) Añadir un supuesto mes llamado “NuevoMes” (y comprobar)
+        <br>c) Comprobar si existen los meses de Mayo y Junio
+        <br>d) Convertir el conjunto en el array llamado arraymeses.
+        <br>e) Eliminar del array el mes de Enero y comprobar qué pasa tanto en el array como en el conjunto
+    </p>
+    <p id="meses"></p>
+    <p id="existen"></p>
+
+    <script>
+        let p = document.getElementById("meses");
+        let p2= document.getElementById("existen");
+
+        const meses= new Set(["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Nobiembre","Diciembre"]);
+        meses.add("NuevoMes");
+
+        meses.forEach(element => {
+            p.innerHTML += `${element} `;
+        });
+
+        if(meses.has("Mayo","Junio")){
+            p2.innerHTML=`Existen`;
+        }else{
+            p2.innerHTML=`No existen`;
+        }
+        
+
+
+    </script>
+</body>
+
+</html>
