@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_2</title>
+</head>
+<body>
+    <h3>Definir la estructura de un objeto que almacene una factura. </h3>
+        <h4><br>Las facturas están formadas por:<br> la
+información de la propia empresa (nombre de la empresa, dirección, teléfono, NIF),<br> la información del
+cliente (Nº cliente, DNI, nombre, domicilio, cp, ciudad, provincia)<br> y una lista de productos (cada uno de
+los cuales dispone de descripción, precio, cantidad) e información básica de la factura (importe total,
+forma de pago).<br>
+Una vez definidas las propiedades del objeto,<br> añadir un método que calcule el importe total de la factura y
+actualice el valor de la propiedad correspondiente.
+<br>Por último, añadir otro método que muestre por pantalla el importe total de la factura.</h4>
+<h3>Notas:</h3>
+-Los datos de la factura serán inventados.
+<br>- Crear la factura como un objeto literal.
+<br>- Crear la factura con herencia. <br>Se deben implementar las clases Empresa, Cliente, Productos,
+datosFactura (que utilice como parámetros la empresa, cliente y productos)<br> y Fatura que herede
+de datosFactura y que incluya además la propiedad formaPago y que incluya el método para
+calcular las líneas de factura y el total de la factura.
+
+=====================================================================================================================
+
+    <script>
+        class Empresa {
+            constructor(nombre,direcion,telefono,nif) {
+                this.nombre=nombre;
+                this.direcion=direcion;
+                this.telefono=telefono;
+                this.nif=nif;
+            }
+        }
+        class Cliente {
+            constructor(numCliente,dni,nombre,domicilio,cp,ciudad,provincia) {
+                this.numCliente=numCliente;
+                this.dni=dni;
+                this.nombre=nombre;
+                this.domicilio=domicilio;
+                this.cp=cp;
+                this.ciudad=ciudad;
+                this.provincia=provincia;                
+            }
+        }
+        class Producto{
+            constructor(descripcion,precio,cantidad){
+                this.descripcion=descripcion;
+                this.precio=precio;
+                this.cantidad=cantidad;
+            }
+        }
+        class Factura{
+            constructor(Empresa, Cliente, Producto,pago){
+                this.Empresa=empresa;
+                this.Cliente=cliente;
+                this.Factura=factura;
+                this.pago=pago;
+                
+            }
+
+
+
+        }
+    </script>
+</body>
+</html>
