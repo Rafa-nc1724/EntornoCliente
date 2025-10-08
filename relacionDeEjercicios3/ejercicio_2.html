@@ -1,75 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio_2</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Factura en HTML</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f4f4f9;
+    }
+
+    .factura {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px 30px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .seccion {
+      margin-bottom: 20px;
+    }
+
+    .seccion h3 {
+      color: #444;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background: #eee;
+    }
+
+    .total {
+      text-align: right;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    .footer {
+      text-align: center;
+      color: #666;
+      font-size: 0.9em;
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
-    <h3>Definir la estructura de un objeto que almacene una factura. </h3>
-        <h4><br>Las facturas están formadas por:<br> la
-información de la propia empresa (nombre de la empresa, dirección, teléfono, NIF),<br> la información del
-cliente (Nº cliente, DNI, nombre, domicilio, cp, ciudad, provincia)<br> y una lista de productos (cada uno de
-los cuales dispone de descripción, precio, cantidad) e información básica de la factura (importe total,
-forma de pago).<br>
-Una vez definidas las propiedades del objeto,<br> añadir un método que calcule el importe total de la factura y
-actualice el valor de la propiedad correspondiente.
-<br>Por último, añadir otro método que muestre por pantalla el importe total de la factura.</h4>
-<h3>Notas:</h3>
--Los datos de la factura serán inventados.
-<br>- Crear la factura como un objeto literal.
-<br>- Crear la factura con herencia. <br>Se deben implementar las clases Empresa, Cliente, Productos,
-datosFactura (que utilice como parámetros la empresa, cliente y productos)<br> y Fatura que herede
-de datosFactura y que incluya además la propiedad formaPago y que incluya el método para
-calcular las líneas de factura y el total de la factura.
+  <div class="factura" id="factura"></div>
 
-=====================================================================================================================
+  <script>
+    // Clase Empresa
+    class Empresa {
+      constructor(nombre, direccion, telefono, nif) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.nif = nif;
+      }
+    }
 
-    <script>
-        class Empresa {
-            constructor(nombre,direcion,telefono,nif) {
-                this.nombre=nombre;
-                this.direcion=direcion;
-                this.telefono=telefono;
-                this.nif=nif;
-            }
-        }
-        class Cliente {
-            constructor(numCliente,dni,nombre,domicilio,cp,ciudad,provincia) {
-                this.numCliente=numCliente;
-                this.dni=dni;
-                this.nombre=nombre;
-                this.domicilio=domicilio;
-                this.cp=cp;
-                this.ciudad=ciudad;
-                this.provincia=provincia;                
-            }
-        }
-        class Producto{
-            constructor(descripcion,precio,cantidad){
-                this.descripcion=descripcion;
-                this.precio=precio;
-                this.cantidad=cantidad;
-            }
-        }
-        class Factura{
-            
-            constructor(empresa, cliente, producto, pago){
-                this.Empresa=empresa;
-                this.Cliente=cliente;
-                this.Producto=producto;
-                this.pago=pago;
-                this.imoprte=0;
-            }
+    // Clase Cliente
+    class Cliente {
+      constructor(numCliente, dni, nombre, domicilio, cp, ciudad, provincia) {
+        this.numCliente = numCliente;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.domicilio = domicilio;
+        this.cp = cp;
+        this.ciudad = ciudad;
+        this.provincia = provincia;
+      }
+    }
 
-            calcularImporte = () => {
-                let imoprte = (producto.cantidad * producto.precio);
-            }
+    // Clase Producto
+    class Producto {
+      constructor(descripcion, precio, cantidad) {
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.cantidad = cantidad;
+      }
 
-        }
+      getImporte() {
+        return this.precio * this.cantidad;
+      }
+    }
 
-        const factura = new Factura("","","","")
-        factura.calcularImporte();
-    </script>
+    // Clase base DatosFactura
+    class DatosFactura {
+      constructor(empresa, cliente, productos) {
+        this.empresa = empresa;
+        this.cliente = cliente;
+        this.productos = productos;
+        this.importeTotal = 0;
+      }
+    }
+
+    // Clase Factura (hereda de DatosFactura)
+    class Factura extends DatosFactura {
+      constructor(empresa, cliente, productos, formaPago) {
+        super(empresa, cliente, productos);
+        this.formaPago = formaPago;
+      }
+
+      calcularTotal() {
+        this.importeTotal = this.productos.reduce(
+          (total, producto) => total + producto.getImporte(),
+          0
+        );
+      }
+
+      mostrarFactura() {
+        const contenedor = document.getElementById("factura");
+
+        let productosHTML = this.productos
+          .map(
+            (p, i) => `
+              <tr>
+                <td>${i + 1}</td>
+                <td>${p.descripcion}</td>
+                <td>${p.cantidad}</td>
+                <td>${p.precio.toFixed(2)} €</td>
+                <td>${p.getImporte().toFixed(2)} €</td>
+              </tr>
+            `
+          )
+          .join("");
+
+        contenedor.innerHTML = `
+          <h1>Factura</h1>
+
+          <div class="seccion">
+            <h3>Empresa</h3>
+            <p><strong>${this.empresa.nombre}</strong></p>
+            <p>${this.empresa.direccion}</p>
+            <p>Tel: ${this.empresa.telefono}</p>
+            <p>NIF: ${this.empresa.nif}</p>
+          </div>
+
+          <div class="seccion">
+            <h3>Cliente</h3>
+            <p><strong>${this.cliente.nombre}</strong></p>
+            <p>DNI: ${this.cliente.dni}</p>
+            <p>${this.cliente.domicilio}</p>
+            <p>${this.cliente.cp}, ${this.cliente.ciudad}, ${this.cliente.provincia}</p>
+          </div>
+
+          <div class="seccion">
+            <h3>Productos</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Descripción</th>
+                  <th>Cantidad</th>
+                  <th>Precio</th>
+                  <th>Importe</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${productosHTML}
+              </tbody>
+            </table>
+          </div>
+
+          <p class="total">Total: ${this.importeTotal.toFixed(2)} €</p>
+          <p><strong>Forma de pago:</strong> ${this.formaPago}</p>
+
+          <div class="footer">
+            <p>Gracias por su compra 💼</p>
+          </div>
+        `;
+      }
+    }
+
+    // ======= Datos de ejemplo =======
+    const empresa = new Empresa(
+      "Tech Solutions S.L.",
+      "Calle Mayor 123, Madrid",
+      "912345678",
+      "B12345678"
+    );
+
+    const cliente = new Cliente(
+      1001,
+      "12345678A",
+      "Carlos Pérez",
+      "Av. Andalucía 45",
+      "28031",
+      "Madrid",
+      "Madrid"
+    );
+
+    const productos = [
+      new Producto("Monitor 27''", 220.5, 2),
+      new Producto("Teclado mecánico", 75.99, 1),
+      new Producto("Ratón inalámbrico", 35.0, 3),
+    ];
+
+    const factura = new Factura(
+      empresa,
+      cliente,
+      productos,
+      "Transferencia bancaria"
+    );
+
+    factura.calcularTotal();
+    factura.mostrarFactura();
+  </script>
 </body>
 </html>
