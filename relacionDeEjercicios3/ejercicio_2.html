@@ -53,17 +53,23 @@ calcular las líneas de factura y el total de la factura.
             }
         }
         class Factura{
-            constructor(Empresa, Cliente, Producto,pago){
+            
+            constructor(empresa, cliente, producto, pago){
                 this.Empresa=empresa;
                 this.Cliente=cliente;
-                this.Factura=factura;
+                this.Producto=producto;
                 this.pago=pago;
-                
+                this.imoprte=0;
             }
 
-
+            calcularImporte = () => {
+                let imoprte = (producto.cantidad * producto.precio);
+            }
 
         }
+
+        const factura = new Factura("","","","")
+        factura.calcularImporte();
     </script>
 </body>
 </html>

@@ -12,11 +12,20 @@ primer|segundo|tercer cuatrimestre del año AAAA”</h4>
 <p id="a"></p>
     <script>
         let p=document.getElementById("a");
-
         let fecha = new Date();
+        let cuatrimestre;
+        let mes=fecha.getMonth();
+        
+        if(mes >= 9 && mes <= 12){
+             cuatrimestre="primer";
+        }else if(mes >= 1 && mes <= 4){
+             cuatrimestre="segundo";
+        }else if(mes >= 5 && mes <= 8){
+            cuatrimestre="tercer";
+        }
 
-        p.innerHTML=`Estamos en el día ${fecha.getDay()} 
-        del mes ${fecha.getMonth()} del primer  cuatrimestre del año ${fecha.getFullYear()}`;
+        p.innerHTML=`Estamos en el día ${fecha.getDay()} día de la semana
+        del mes ${fecha.getMonth()} del ${cuatrimestre} cuatrimestre del año ${fecha.getFullYear()}`;
 
     </script>
 </body>
