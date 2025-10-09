@@ -1,3 +1,4 @@
-console.log("texto en consola");
-alert("Texto en ventana");
-document.write("texto en documento");
+let cadena = "pepe";
+let cadenainvertida=cadena.split("").reverse().join("");
+console.log(cadenainvertida);
+

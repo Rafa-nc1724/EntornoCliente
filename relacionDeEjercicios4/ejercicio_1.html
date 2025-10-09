@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_1</title>
+</head>
+
+<body>
+    <h2>1) Realizar una función javascript que invierta las palabras de una cadena de texto,</h2>
+    <p>Ej: invertir(“Miguel Angel”) devolverá “legnA leugiM”. </p>
+    <p>Nota: Array.from(), split(), spread operator, for of</p>
+    <br>
+    Introduce una cadena:<input type="text" id="onchange" onchange="invertironchange()"><br>
+
+    Introduce una cadena:<input type="text" id="oninput" oninput="invertironinput()"><br>
+
+    Introduce una cadena:<input type="text" id="boton">
+
+    <button onclick="invertir()">Invertir</button>
+    
+
+
+    
+    <p id="cadenaInversaonchange"></p>
+    <p id="cadenaInversaoninput"></p>
+    <p id="cadenaInversa"></p>
+    <script>
+
+        function invertironchange() {
+            let cadena = document.getElementById('onchange').value;
+            let resultado = document.getElementById('cadenaInversaonchange');
+            
+            resultado.innerHTML = `${cadena.split("").reverse().join("")}`;
+            
+
+        }
+
+        function invertironinput() {
+            let cadena = document.getElementById('oninput').value;
+            let resultado = document.getElementById('cadenaInversaoninput');
+            
+            resultado.innerHTML = `${cadena.split("").reverse().join("")}`;
+            
+
+        }
+
+        function invertir() {
+            let cadena = document.getElementById('boton').value;
+            let resultado = document.getElementById('cadenaInversa');
+            
+            resultado.innerHTML = `${cadena.split("").reverse().join("")}`;
+            
+
+        }
+    </script>
+</body>
+
+</html>
