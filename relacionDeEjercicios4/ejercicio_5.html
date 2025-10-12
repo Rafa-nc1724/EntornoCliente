@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_5</title>
+</head>
+<body>
+    <h2>5) Realizar una función javascript que dada una fecha, devuelva cuantos años han pasado hasta la fecha
+actual</h2>
+<label>Dame una fecha en el siguiente formato: YYYY-mm-dd</label>
+<input type="text" id="fecha">
+<button onclick="calcularFecha()">Calcular</button>
+<p id="result"></p>
+<script>
+    function calcularFecha(){
+        let result=document.getElementById('result');
+        let fecha=document.getElementById('fecha').value;
+        let fecha1= new Date(fecha);
+        const fecha2=new Date();
+        result.innerHTML=`Han pasado ${fecha2.getFullYear()-fecha1.getFullYear()} años`;
+
+    }
+
+</script>
+
+</body>
+</html>

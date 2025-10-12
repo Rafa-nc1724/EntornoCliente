@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_3</title>
+</head>
+<body>
+    <h2>3) Realizar una función javascript que elimine una subcadena de texto de un texto dado</h2>
+    <p>Ej:eliminarSubcadena("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá "1, 2, 3, 4 y 5” .</p>
+    <p>Nota: replace()</p>
+
+    <label>Introduce el texto completo:</label>
+    <input type="text" id="cadena" size="50"><br><br>
+
+    <label>Introduce la subcadena a eliminar:</label>
+    <input type="text" id="subcadena"><br><br>
+
+    <button onclick="eliminarSubcadena()">Eliminar</button>
+    <hr>
+
+    <p id="resultado"></p>
+    
+    
+    <script>
+    
+
+   
+        // Función con notación Arrow Function
+        const eliminarSubcadena = () => {
+            const cadena = document.getElementById('cadena').value;
+            const subcadena = document.getElementById('subcadena').value;
+            const resultado = document.getElementById('resultado');
+
+            if (!subcadena) {
+                resultado.textContent = "Por favor, introduce una subcadena válida.";
+                return;
+            }
+
+            // Expresión regular global e insensible a mayúsculas
+            const regex = new RegExp(subcadena, 'gi');
+            const textoLimpio = cadena.replace(regex, "").trim();
+
+            resultado.textContent = `Resultado: ${textoLimpio}`;
+        };
+  
+    </script>
+</body>
+</html>
