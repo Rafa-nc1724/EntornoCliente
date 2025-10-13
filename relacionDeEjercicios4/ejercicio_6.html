@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio_6</title>
 </head>
+
 <body>
     <h2>6) Realizar una función que devuelva el número de vocales y consonantes de una cadena de texto pasada
-como parámetro</h2>
+        como parámetro</h2>
     <p>Ej: vocalConsonante("Hola Mundo") devuelva Vocales: 4, Consonantes: 5. </p>
-    
+        <label>Introduce un texto: </label>
+        <input type="text" id="texto">
+        <button onclick="contarVocalesYConsonantes()">Contar</button>
+        <p id="resultado"></p>
+    <script>
+
+        
+
+        function contarVocalesYConsonantes() {
+            // Convertimos todo a minúsculas y eliminamos caracteres no alfabéticos
+            let p=document.getElementById("resultado");
+            let cadena = document.getElementById("texto").value;
+            const soloLetras = cadena.toLowerCase().replace(/[^a-záéíóúüñ]/g, "");
+
+            // Definimos las vocales (considerando acentos y diéresis)
+            const vocales = "aeiouáéíóúü";
+
+            // Inicializamos contadores
+            let numVocales = 0;
+            let numConsonantes = 0;
+
+            // Recorremos cada carácter del texto filtrado
+            for (let letra of soloLetras) {
+                if (vocales.includes(letra)) {
+                    numVocales++;
+                } else {
+                    numConsonantes++;
+                }
+            }    
+
+            p.innerHTML=`La frase tiene ${numVocales} vocales y ${numConsonantes} consonantes`;
+        }
+    </script>
 </body>
+
 </html>

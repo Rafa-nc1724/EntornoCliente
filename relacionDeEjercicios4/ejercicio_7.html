@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_7</title>
+</head>
+<body>
+
+<h2>7) Realizar una función javascript con notación “Arrow function” que dado un array como parámetro,
+devuelva un array con el mayor y el menor número encontrados en el array pasado como parámetro.</h2>
+<p>Ej. mayorMenor(([7, 4, 5, 199, -21]) devolverá [199, -21]. </p>
+
+    <script>
+        const mayorMenor = (array) =>[Math.max(...array), Math.min(...array)];
+        let numeros=[7,4,5,199,-21];
+        const resultado=mayorMenor(numeros);
+
+
+        console.log(`Array original ${numeros}`);
+        console.log(`Array actual ${resultado}`);
+    </script>
+</body>
+</html>
