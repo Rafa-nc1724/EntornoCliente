@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_10</title>
+</head>
+
+<body>
+    <h3>10) Realizar en javascript una clase llamada Película con los siguientes datos: id de la película, titulo,
+        director, año de estreno, país o países de origen, género y calificación. </h3>
+    <h4>Hay que comprobar lo siguiente:</h4>
+    <p>
+        - que el id tenga 9 caracteres, los primeros 2 sean letras y los 7 restantes números.<br>
+        - que el título no supere los 100 caracteres.<br>
+        - que el año de estreno sea un número entero de 4 dígitos.<br>
+        - que el país o países sea introducidos en forma de array.<br>
+        - que el género introducido esté entre los siguientes géneros válidos. los géneros sean introducidos en
+        forma de arreglo.<br>
+        - Valida que los géneros introducidos estén dentro de los géneros aceptados: Action,
+        Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film
+        Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi,
+        Short, Sport, Talk-Show, Thriller, War, Western*. - Crea un método estático que devuelva los géneros
+        aceptados*.<br></p>
+    <h4>Crear un método que devuelva toda la ficha técnica de la película. </h4>
+    <p>=======================================================================</p>
+    <h2>Registrar Película</h2>
+
+  <form id="formPelicula">
+    <label>ID (2 letras + 7 números)</label>
+    <input type="text" id="id" required>
+<br>
+    <label>Título</label>
+    <input type="text" id="titulo" required>
+<br>
+    <label>Director</label>
+    <input type="text" id="director" required>
+<br>
+    <label>Año de estreno</label>
+    <input type="number" id="año" required>
+<br>
+    <label>Países (separados por coma)</label>
+    <input type="text" id="paises" required>
+<br>
+    <label>Géneros (separados por coma)</label>
+    <input type="text" id="generos" required>
+<br>
+    <label>Calificación (0 a 10)</label>
+    <input type="number" id="calificacion" step="0.1" required>
+<br>
+    <button type="submit">Registrar Película</button>
+    <br>
+  </form>
+
+  <div class="error" id="error"></div>
+  <div class="ficha" id="ficha"></div>
+    <script>
+        //Clase Película
+        class Pelicula {
+            //lista de generos
+            static generosAceptados = [
+                "Action", "Adult", "Adventure", "Animation", "Biography", "Comedy",
+                "Crime", "Documentary", "Drama", "Family", "Fantasy", "Film_Noir",
+                "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News",
+                "Reality_TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show",
+                "Thriller", "War", "Western"
+            ];
+
+            constructor({ id, titulo, director, anio, pais, genero, calificacion }) {
+                this.id = id_pelicula;
+                this.titulo = titulo;
+                this.directos = directos;
+                this.anio = anio_estreno;
+                this.pais = pais_origen;
+                this.genero = genero;
+                this.calificacion = calificacion;
+            }
+
+            get id() {
+                return this.id;
+            }
+            set id(valor) {
+                if (!/^[A-Za-z]{2}\d{7}$/.test(valor)) {
+                    throw new Error("El Id debe de tener 9 caracteres: 2 letras y 7 números");
+                }
+                this.id = valor;
+            }
+
+            get titulo() {
+                return this._titulo;
+            }
+            set titulo(valor) {
+                if (valor.length > 100) {
+                    throw new Error("El título no puede superar los 100 caracteres");
+                }
+                this._titulo = valor;
+            }
+
+            get director() {
+                return this._director;
+            }
+            set director(valor) {
+                this._director = valor;
+            }
+
+            get anio() {
+                return this.anio;
+            }
+            set anio(valor) {
+                if (!/^\d{4}$/.test(valor.toString())) {
+                    throw new Error("El año debe ser un número entero de 4 dígitos");
+                }
+                this.anio = valor;
+            }
+
+            get pais() {
+                return this.pais;
+            }
+            set pais(valor) {
+                if (!Array.isArray(valor)) {
+                    throw new Error("Los países deben ser introducidos en forma de array");
+                }
+                this.pais = valor;
+            }
+
+            get genero() {
+                return this.genero;
+            }
+            set genero(valor) {
+                if (!Array.isArray(valor)) {
+                    throw new Error("Los géneros deben ser introducidos en forma de array");
+                }
+                for (let genero of valor) {
+                    if (!Pelicula.generosAceptados.includes(genero)) {
+                        throw new Error(`Género no válido: ${genero}`);
+                    }
+                }
+                this.genero = valor;
+            }
+
+            get calificacion() {
+                return this.calificacion;
+            }
+            set calificacion(valor) {
+                if (typeof valor !== "number" || valor < 0 || valor > 10) {
+                    throw new Error("La calificación debe ser un número entre 0 y 10");
+                }
+                this.calificacion = valor;
+            }
+
+            fichaTecnica() {
+                return `
+                    Id: ${this.id}, 
+                    Título: ${this.titulo}, 
+                    Director: ${this.director}, 
+                    Año: ${this.anio}, 
+                    Pais: ${this.pais}, 
+                    Género: ${this.anio}, 
+                    Calificación: ${this.calificacion},
+                `;
+            }
+
+            static obtenerGenerosAceptados() {
+                return Pelicula.generosAceptados.join(", ");
+            }
+        }
+
+        // formulario
+        const form = document.getElementById("formPelicula");
+        const errorDiv = document.getElementById("error");
+        const fichaDiv = document.getElementById("ficha");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            errorDiv.textContent = "";
+            fichaDiv.textContent = "";
+
+            try {
+                const pelicula = new Pelicula({
+                    id: document.getElementById("id").value.trim(),
+                    titulo: document.getElementById("titulo").value.trim(),
+                    director: document.getElementById("director").value.trim(),
+                    año: parseInt(document.getElementById("año").value),
+                    paises: document.getElementById("paises").value.split(",").map(p => p.trim()),
+                    generos: document.getElementById("generos").value.split(",").map(g => g.trim()),
+                    calificacion: parseFloat(document.getElementById("calificacion").value)
+                });
+
+                fichaDiv.textContent = pelicula.fichaTecnica();
+            } catch (err) {
+                errorDiv.textContent = err.message;
+            }
+        });
+
+    </script>
+</body>
+
+</html>

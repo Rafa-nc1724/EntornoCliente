@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_9</title>
+</head>
+<body>
+    <h3>Programa una función que dado un array de números devuelva un objeto con dos arrays, el primero
+contendrá el contenido del array original ordenado en forma ascendente y el segundo, el contenido del
+array original ordenado de forma descendiente.
+</h3>
+<p>Ej ascendenteDescendente(([3, 5,3,8,6]) devolverá { asc: [3,3,5,6,8], desc: [8,6,5,3,3] }.</p>
+    <script>
+        const arrayOriginal=[3, 5,3,8,6];
+        const ordenaArray = (numeros) =>{
+            return{
+                ascendente: [...numeros].sort((a, b)=> a - b), //[...numeros]
+                descendente: [...numeros].sort((a,b)=> b-a)
+            };
+        }
+        console.log(ordenaArray(arrayOriginal));
+        //[...numeros] creará una copia superficial del array original.
+    </script>
+</body>
+</html>
