@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_11</title>
+</head>
+<body>
+    <h2>Ejercicio de Herencia en JavaScripta</h2>
+    <p id="result"></p>
+    <script>
+        class Habitacion{
+            constructor(numero,capacidad,servicios){
+                this.numero=numero;
+                this.capacidad=capacidad;
+                this.servicios=servicios;
+            }
+            calcularPrecio(){
+                const precio=(this.capacidad*24)+(this.servicios*3);
+                return precio;
+            }
+        }
+        class HabitacionHotel extends Habitacion{
+            constructor(numero,capacidad,servicios,director,categoria,numHabEstd,numHabSuit){
+                super(numero,capacidad,servicios);
+                this.director=director;
+                this.categoria=categoria;
+                this.numHabEstd=numHabEstd;
+                this.numHabSuit=numHabSuit;
+            }
+            calcularPrecio(){
+                const precioBase=super.calcularPrecio();
+                const incremento=(this.categoria-1)*0.05;
+                const precioFinal=precioBase+(precioBase*incremento);
+                return precioFinal;
+            }
+            calculaRecaudacion(){
+                const habEst=new Habitacion(1,2,2);
+                const precioEst=habEst.calcularPrecio();
+                const increEst=(this.categoria-1)*0.05;
+                const precioEstFnl=precioEst+(precioEst*increEst);
+
+                const habSuit=new Habitacion(2,2,5);
+                const preSuit=habSuit.calcularPrecio();
+                const increSuit=(this.categoria-1)*0.05;
+                const preSuitFnl=preSuit+(preSuit*increSuit);
+
+                const total=(precioEstFnl*this.numHabEstd)+(preSuitFnl*this.numHabSuit);
+
+                return total;
+            }
+            mostrarInfo(){
+                return `
+                    Director: ${this.director}, 
+                    Categoria: ${this.categoria} estrellas, 
+                    Número de habitaciones normales: ${this.numHabEstd}, 
+                    Número de habitaciones Suites: ${this.numHabSuit}, 
+                    Precio habitación actual: ${this.calcularPrecio().toFixed(2)}€, 
+                    Recaudación total del hotel si está completo: ${this.calculaRecaudacion().toFixed(2)}€
+                `;
+
+            }
+
+        }
+
+        const habitacion1= new HabitacionHotel(
+            101,//numero
+            3,//capacidad
+            4,//servicios
+            "Ana Gómez",//director
+            4,//categoria(estrellas)
+            20,//habitaciones
+            5//Suites
+        );
+        document.getElementById("result").textContent=habitacion1.mostrarInfo();
+    </script>
+</body>
+</html>
