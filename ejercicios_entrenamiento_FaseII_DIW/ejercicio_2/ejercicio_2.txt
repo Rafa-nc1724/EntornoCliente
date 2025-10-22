@@ -1,0 +1,6 @@
+Utiliza una hoja de estilos para definir los siguientes estilos para la página creada en el ejercicio 1.
+
+Define una tipografía para los títulos y otra para el texto.
+Haz que la fotografía quede en la parte superior izquierda de la página.
+Destaca los títulos con un color de fondo diferente.
+Establece márgenes de separación entre los párrafos y títulos.

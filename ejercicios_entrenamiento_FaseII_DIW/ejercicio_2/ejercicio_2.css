@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Lexend+Giga:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Elite&display=swap');
+
+.h1 {
+    font-family: "Lavishly Yours", cursive;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: nomal;
+}
+
+.h2 {
+    font-family: "Special Elite", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.tittle {
+    font-family: "Lexend Giga", sans-serif;
+    background-color: rgb(195, 194, 194);
+    color: black;
+    display: inline;
+}
+
+.parraf {
+    font-family: 'Roboto', Courier, monospace;
+
+}

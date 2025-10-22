@@ -1,0 +1,7 @@
+Crea una página web básica (sin estilos) con tu currículum. La página debe contener al menos los siguientes apartados:
+
+Datos personales (fotografía incluida).
+Formación académica (con enlaces a los centros donde has estudiando).
+Experiencia laboral.
+Formación complementaria.
+Otras habilidades.
