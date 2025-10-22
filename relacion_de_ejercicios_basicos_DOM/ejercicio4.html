@@ -1,0 +1,50 @@
+<!--Realizar un ejercicio javascript que muestre en pantalla un formulario para rellener nombre y apellidos, de forma
+que cuando se le de al botón de “Enviar” aparezca un Mensaje de Bienvenida al usuario y cuando demos al botón
+“Limpiar”, se limpien el formulario y desaparezca el mensaje de bienvenida-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio4</title>
+</head>
+
+<body>
+    <h1>Rellene sus datos</h1>
+
+    <label>Nombre:</label>
+    <input type="text" id="nombre">
+    <label>Apellidos:</label>
+    <input type="text" id="apellidos">
+    <br>
+    <button id="enviar" onclick="enviar()">Enviar</button>
+    <button  id="limpiar" onclick="limpiar()">Limpiar</button>
+    <p id="result"></p>
+
+    <script>
+        const enviar = () => {
+            let nombre = document.getElementById('nombre').value;
+            let apellidos = document.getElementById('apellidos').value;
+            let p = document.getElementById('result');
+
+            if (nombre !== "" && apellidos !== "") {
+
+                let msg = `Hola, bienvenido ${nombre} ${apellidos}`;
+                p.innerHTML = msg;
+                console.log(msg);
+            } else {
+                msg = "Escribe los datos solicitados";
+                p.innerHTML = msg;
+                console.log(msg);
+            }
+        };
+        const limpiar = () => {
+            document.getElementById('nombre').value = "";
+            document.getElementById('apellidos').value = "";
+            document.getElementById('result').innerHTML = "";
+        };
+    </script>
+</body>
+
+</html>

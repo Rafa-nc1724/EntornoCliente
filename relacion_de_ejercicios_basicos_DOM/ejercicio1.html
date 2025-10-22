@@ -1,9 +1,18 @@
+<!--1) A partir de la página web proporcionada y utilizando las funciones DOM, mostrar por pantalla la siguiente
+información:
+a) Número de enlaces de la página
+b) Dirección a la que enlaza el penúltimo enlace
+c) Numero de enlaces que enlazan a http://www.marca.es
+d) Número de enlaces del tercer párrafo
+-->
+
 <!DOCTYPE html>
 
 <head>
     <meta charset="UTF-8">
     <title>Ejercicio 1 - DOM basico</title>
 </head>
+
 <body>
     <p>Lo nunca visto. Real Madrid, Barcelona y Atlético han empezado LaLiga de tropiezo
         en tropiezo <a href="http://www.marca.es">diario marca</a>.
@@ -42,6 +51,48 @@
         en Éibar. <a href="http://diariodesevilla.es/">diario de Sevilla</a></p>
 
     <script>
+        // Creamos un contenedor para mostrar los resultados
+        let resultadoDiv = document.createElement('div');
+        resultadoDiv.style.border = "1px solid #000";
+        resultadoDiv.style.padding = "10px";
+        resultadoDiv.style.marginTop = "20px";
+        resultadoDiv.style.backgroundColor = "#f9f9f9";
+
+        // a) Número de enlaces de la página
+        let enlaces = document.getElementsByTagName('a');
+        let totalEnlaces = document.createElement('p');
+        totalEnlaces.textContent = "Número de enlaces: " + enlaces.length;
+        resultadoDiv.appendChild(totalEnlaces);
+
+        // b) Dirección a la que enlaza el penúltimo enlace
+        if (enlaces.length >= 2) {
+            let penultimo = document.createElement('p');
+            penultimo.textContent = "Penúltimo enlace: " + enlaces[enlaces.length - 2].href;
+            resultadoDiv.appendChild(penultimo);
+        }
+
+        // c) Número de enlaces que enlazan a http://www.marca.es
+        let marcaCount = 0;
+        for (let i = 0; i < enlaces.length; i++) {
+            if (enlaces[i].href === "http://www.marca.es/" || enlaces[i].href === "http://www.marca.es") {
+                marcaCount++;
+            }
+        }
+        let enlacesMarca = document.createElement('p');
+        enlacesMarca.textContent = "Número de enlaces a http://www.marca.es: " + marcaCount;
+        resultadoDiv.appendChild(enlacesMarca);
+
+        // d) Número de enlaces del tercer párrafo
+        let parrafos = document.getElementsByTagName('p');
+        if (parrafos.length >= 3) {
+            let enlacesTercerParrafo = parrafos[2].getElementsByTagName('a');
+            let enlacesTercerParrafoText = document.createElement('p');
+            enlacesTercerParrafoText.textContent = "Número de enlaces del tercer párrafo: " + enlacesTercerParrafo.length;
+            resultadoDiv.appendChild(enlacesTercerParrafoText);
+        }
+
+        // Añadimos el contenedor al body
+        document.body.appendChild(resultadoDiv);
 
     </script>
 

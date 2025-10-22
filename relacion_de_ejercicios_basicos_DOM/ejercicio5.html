@@ -1,0 +1,83 @@
+<!-- Realizar un ejercicio javascript que muestre un documento con 5 párrafos y 5 botones, el primer botón debe
+contener el texto “Cambiartodos”, el segundo botón “Cambiar primero”, el tercer botón “Cambiar pares”, el cuarto
+botón “Cambiar impares”, el quinto botón “Añadir al final” y el sexto botón “Estado original” con las siguientes
+funciones respectivamente:
+- Cambiar todos debe cambiar el color de todos los párrafos a rojo
+- Cambiar primero debe mostrar en color rojo solo el primer párrafo
+- Cambiar pares debe mostrar en color rojo solo los párrafos pares
+- Cambiar impares debe mostrar en color rojo solo los párrafos impares
+- Añadir al final debe añadir un párrafo después del 2º párrafo
+- Estado original debe devolver el documento al estado original-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejericcio_5</title>
+    <style>
+        p{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="parrafos-contenedor">
+        <p>Párrafo 1</p>
+        <p>Párrafo 2</p>
+        <p>Párrafo 3</p>
+        <p>Párrafo 4</p>
+        <p>Párrafo 5</p>
+    </div>
+    <button onclick="cambiarTodos()">Cambiar Todos</button>
+    <button onclick="cambiarPrimero()">Cambiar Primero</button>
+    <button onclick="cambiarPares()">Cambiar Pares</button>
+    <button onclick="cambiarImpares()">Cambiar Impares</button>
+    <button onclick="añadirAlFinal()">Añadir al final</button>
+    <button onclick="estadoOriginal()">Estado Original</button>
+    <script>
+        //guardo los parrafos originales
+        const parrafosContainer = document.getElementById('parrafos-contenedor');
+        let parrafosOriginales = Array.from(parrafosContainer.children).map(p => p.outerHTML);
+        //funcion que va a acambiar los colores a rojo de los párrafos
+        const cambiarTodos = () =>{
+            Array.from(parrafosContainer.children).forEach(p=>p.style.color='red');
+        };
+        //función que va a cambiar solo el primer párrafo
+        const cambiarPrimero = () =>{
+            Array.from(parrafosContainer.children).forEach((p, i)=> {
+                p.style.color = (i===0)? 'red' : 'black';
+            });
+        };
+        //esta función cambiará solamente los párrafos pares
+        const cambiarPares = () => {
+            Array.from(parrafosContainer.children).forEach((p,i)=>{
+                p.style.color = ((i+1)%2===0)? 'red' : 'black';
+            });
+        };
+        //esta función cambiará solo los párrafos impares
+        const cambiarImpares = () =>{
+            Array.from(parrafosContainer.children).forEach((p,i)=>{
+                p.style.color = ((i+1)%2!==0)? 'red' : 'black';
+            });
+        };
+        //etsa función va a añadir un nuevo parrafo después del segundo
+        const añadirAlFinal = () =>{
+            //priemro creoel elemento
+            const nuevoParrafo = document.createElement('p');
+            nuevoParrafo.textContent = "Nuevo párrafo añadido";
+            //ahora con el elemento creado lo meto dentro del div después del segundo paarrafo
+            if(parrafosContainer.children.length >= 2){
+                parrafosContainer.insertBefore(nuevoParrafo, parrafosContainer.children[2]);
+            } else {
+                parrafosContainer.appendChild(nuevoParrafo);
+            }
+        };
+        //ultima función que restablece todo
+        const estadoOriginal = () =>{
+            parrafosContainer.innerHTML=parrafosOriginales.join('');
+        };
+        
+    </script>
+</body>
+</html>

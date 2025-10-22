@@ -1,23 +1,49 @@
+<!--Completar el código JavaScript sobre la página html proporcionada para que se añadan nuevos elementos a la lista
+cada vez que se pulsa sobre el botón. Utilizar las funciones DOM para crear nuevos nodos y añadirlos a la lista
+existente. -->
+
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta  charset="UTF-8" />
-<title>Ejercicio 3 - DOM</title>
- 
+  <meta charset="UTF-8" />
+  <title>Ejercicio 3 - DOM</title>
+
 
 </head>
- 
+
 <body>
- 
-<ul id="diariosdeportivos">
-  <li>Marca</li>
-  <li>As</li>
-  <li>Mundo deportivo</li>
-  <li>Sport</li>
-  <li>L'equipe</li>
-</ul>
- 
-<input type="button" value="Añadir elemento">
- 
+
+  <ul id="diariosdeportivos">
+    <li>Marca</li>
+    <li>As</li>
+    <li>Mundo deportivo</li>
+    <li>Sport</li>
+    <li>L'equipe</li>
+  </ul>
+
+  <input type="button" value="Añadir elemento" id="botonAñadir" onclick="nuevoElement()">
+  <script>
+    //obtenemos los elementos de la lista y del botón
+    let lista = document.getElementById('diariosdeportivos');
+    let boton = document.getElementById('botonAñadir');
+
+    function nuevoElement() {
+      //creo un nuevo elemento li
+      let nuevoElemento = document.createElement("li");
+
+      //pedimos el nombre
+      let nombre = prompt("Introduce el nombre del nuevo diario.");
+      if(nombre){
+        nuevoElemento.textContent = nombre;
+        //añado el elemento a la lista
+        lista.appendChild(nuevoElemento);
+      } else {
+        alert("No se ha introducifo ningún nombre.")
+      }
+
+    }
+  </script>
 </body>
+
 </html>
