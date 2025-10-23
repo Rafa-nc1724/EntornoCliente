@@ -1,0 +1,62 @@
+<!--Realizar un documento javascript que genere 5 párrafos y un botón “Invertir”, de forma que al pulsarlo aparezcan
+los párrafos en orden inverso al que han sido creados.-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_6</title>
+</head>
+
+<body onload="generar()">
+    
+    <button onclick="invertir()">Invertir</button>
+    <p id="result"></p>
+    <script>
+        let p = document.getElementById('result');
+        // Array con los jugadores de España en la final del Mundial 2010
+const misParrafos = [
+  "<p>Iker Casillas</p>",
+  "<p>Sergio Ramos</p>",
+  "<p>Gerard Piqué</p>",
+  "<p>Carles Puyol</p>",
+  "<p>Joan Capdevila</p>",
+  "<p>Sergio Busquets</p>",
+  "<p>Xabi Alonso</p>",
+  "<p>Xavi Hernández</p>",
+  "<p>Andrés Iniesta</p>",
+  "<p>David Villa</p>",
+  "<p>Pedro Rodríguez</p>",
+  "<p>Jesús Navas</p>",
+  "<p>Cesc Fàbregas</p>",
+  "<p>Fernando Torres</p>",
+  "<p>Álvaro Arbeloa</p>",
+  "<p>Pepe Reina</p>",
+  "<p>Víctor Valdés</p>",
+  "<p>Raúl Albiol</p>",
+  "<p>Javi Martínez</p>",
+  "<p>David Silva</p>",
+  "<p>Juan Mata</p>",
+  "<p>Fernando Llorente</p>"
+];
+
+        const invertir = () => {
+            p.innerHTML = "";
+            array2 = misParrafos.reverse();
+            array2.forEach(element => {
+                p.innerHTML += element;
+            });
+        }
+        const generar = () => {
+            p.innerHTML="";
+            misParrafos.forEach(element => {
+                p.innerHTML += element;
+            });
+        };
+
+    </script>
+</body>
+
+</html>
