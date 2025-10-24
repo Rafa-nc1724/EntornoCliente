@@ -1,0 +1,29 @@
+<!--Crear un documento javascript que muestre un párrafo, dentro del cual, en alguna de sus líneas,
+ aparezca un enlace a la dirección http://www.marca.es y un botón “Cambiar periódico”, de forma que 
+ al pulsar dicho botón, se cambie la dirección del enlace por http://www.as.com-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_8</title>
+</head>
+
+<body>
+    <p>Esto es un parrafo que tiene dentro una <a id="enlace" href="http://www.marca.es">dirección web</a></p>
+    <button onclick="cambiarEnlace()">Cambiar periódico</button>
+    <script>
+        const cambiarEnlace = () => {
+            let enlace = document.getElementById('enlace');
+            let nuevaUrl = prompt("Introduce la nueva dirección del periódico:");
+            if (nuevaUrl) {
+                const enlace = document.getElementById("enlace");
+                enlace.href = nuevaUrl;
+                
+            }
+        };
+    </script>
+</body>
+
+</html>

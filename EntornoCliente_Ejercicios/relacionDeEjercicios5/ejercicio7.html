@@ -1,27 +1,47 @@
-<!--Crear un documento javascript que genere una lista de 10 elementos y un botón “Ordenar”, de forma que al
-pulsarlo aparezcan los elementos de la lista ordenados alfabéticamente.-->
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio_7</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ejercicio_7</title>
 </head>
 <body onload="generarlista()">
-    <p id="result"></p>
-    <button onclick="ordenar()">Ordenar</button>
-</body>
-<script>
-    let p=document.getElementById('result');
-    const generarlista=()=>{
-        for(let i=0;i<=10;i++){
-            p.innerHTML+=`<p>Parrafo ${i}</p>`;
-        }
-    };
-    const ordenar=()=>{
-        let a=Array.from()
-    };
-</script>
-</html>
+  <!-- Contenedor correcto -->
+  <div id="result"></div>
+  <button onclick="ordenar()">Ordenar</button>
 
+  <script>
+    const contenedor = document.getElementById('result');
+
+    const generarlista = () => {
+      // Genera 10 párrafos con números aleatorios entre 1 y 10
+      for (let i = 0; i < 10; i++) {
+        contenedor.innerHTML += `<p>Parrafo ${Math.floor(Math.random() * 10) + 1}</p>`;
+      }
+    };
+
+    const ordenar = () => {
+      // Obtengo NodeList de <p> y lo convierto a array
+      const nodos = Array.from(contenedor.getElementsByTagName('p')); 
+      /*
+      Básicamente se quedaría algo así:
+      nodos=[
+      <p>Parrafo x</p>,
+      <p>Parrafo x</p>,
+      <p>Parrafo x</p>
+      <p>Parrafo x</p>];
+      */
+      // Extraigo el texto y lo ordeno
+      const ordenados = nodos.map(el => el.textContent)//Produce algo como esto: ["Parrafo 1","Parrafo 3","Parrafo 2"];
+        .sort((a, b) => a.localeCompare(b, 'es')); 
+        // compara las dos palabras basandode en el idioma indicado en el parametro localeCompare(b,"idioma")
+
+      // Limpio y vuelvo a rellenar
+      contenedor.innerHTML = "";
+      ordenados.forEach(texto => {
+        contenedor.innerHTML += `<p>${texto}</p>`;
+      });
+    };
+  </script>
+</body>
+</html>
