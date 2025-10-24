@@ -1,0 +1,5 @@
+Para la página anterior, crear un menú lateral con ítems enlazados con
+los diferentes apartados del currículum. El menú debe permanecer fijo, 
+en la parte izquierda, mientras que el contenido debe ser “scrollable”. 
+Los ítems del menú debe cambiar de color y con texto en negrita cuando 
+pasamos el ratón por encima.

@@ -28,6 +28,9 @@ body {
   flex: 1 1 200px;
   background-color: #e0e0e0;
   padding: 20px;
+  position: fixed;
+  width: 30%;
+  height: 100%;
 }
 
 .foto {
@@ -100,8 +103,13 @@ body {
 
 /* Columna derecha */
 .contenido {
-  flex: 3 1 700px;
+/*  flex: 3 1 700px;*/
   padding: 30px;
+  width: 100%;
+  margin-left: 30%;
+}
+
+.contenido > div {
   background-color: #fff;
 }
 
