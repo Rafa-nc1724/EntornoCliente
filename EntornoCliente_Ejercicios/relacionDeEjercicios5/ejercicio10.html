@@ -1,0 +1,60 @@
+<!--Crear una lista con 5 elementos y debajo 2 cuadros de texto (uno contenido y otro posición) 
+y un botón “Insertar”, de forma que al hacer clic sobre el botón insertar inserte un elemento 
+en la lista con el contenido del primer cuadro de texto (cuadro de texto contenido) y en la 
+posición elegida en el cuadro de texto posición-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_10</title>
+</head>
+<body>
+    <ul id="list">
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+        <li>Elemento 4</li>
+        <li>Elemento 5</li>
+    </ul>
+    <label>Contenido:</label>
+    <input type="text" id="content">
+    <label>Posición:</label>
+    <input type="text" id="position">
+    <br><button id="insert">Insertar</button>
+    <script>
+        //guardamos unas variables que nos van a servir de referencias para trabajar con ellas.
+        let list=document.getElementById('list');
+        let content=document.getElementById('content');
+        let position=document.getElementById('position');
+        let btn=document.getElementById('insert');
+
+        btn.addEventListener('click', ()=>{
+            let text= content.value.trim();
+            let pos= parseInt(position.value);
+
+            if(text==''){
+                alert('Introduce un texto.');
+                return;
+            }
+            if(pos== NaN || pos<1){
+                alert('Introduce un número mayor o igual a 1');
+            }
+            const newLi=document.createElement('li');
+            newLi.textContent=text;
+
+            const items=document.getElementsByTagName('li');
+            const total=items.length;
+
+            if(pos>total){
+                list.appendChild(newLi);
+            }
+            list.insertBefore(newLi, items[pos-1]);
+            content.value='';
+            position.value='';
+            content.focus();
+        });
+    </script>
+</body>
+</html>

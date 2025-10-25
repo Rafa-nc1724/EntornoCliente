@@ -1,0 +1,76 @@
+<!--Crear un documento con 2 párrafos, añadir en medio de ellos otro párrafo con las funciones de creación,
+modificación y eliminación de nodos.-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="primero">Primer parrafo</p>
+    <p id="segundo">Segundo parrafo</p>
+    <button id="crear">Crear</button>
+    <button id="modificar">Modificar</button>
+    <button id="eliminar">Eliminar</button>
+    <script>
+
+        let primero = document.getElementById('primero');
+        let segundo = document.getElementById('segundo');
+        let btnCre = document.getElementById('crear');
+        let btnMod = document.getElementById('modificar');
+        let btnElm = document.getElementById('eliminar');
+        
+
+        //id para usar de párrafo intermedio
+        const ID_INTERM = 'intermedio';
+
+        //función para saber si el parrafo ya existe
+        function existeParrafo() {
+            return document.getElementById(ID_INTERM) !== null;
+        }
+
+        //fucnión para crear el parrafo
+        btnCre.addEventListener('click', () => {
+            if (existeParrafo()) {
+                alert('El párrfo ya existe');
+                return;
+            }
+
+            let p = document.createElement('p');
+            p.id = ID_INTERM;
+            p.textContent = 'Soy el párrafo creado intermedio';
+
+            //para situarlo en medio uso insertBefore que lo que hace es que lo 
+            // inserta delante de segundo de la siguiente manera
+            segundo.parentNode.insertBefore(p, segundo);
+        });
+        //función para modificar el párrafo.
+        btnMod.addEventListener('click', () =>{
+            let p=document.getElementById(ID_INTERM);
+            if(!p){
+                alert('No existe el párrafo');
+                return;
+            }
+            let nuevoTxt=prompt('Inserta el núevo texto para el párrafo', p.textContent);
+            if(nuevoTxt===null) return;
+            p.textContent=nuevoTxt;
+        });
+        //función para eliminar el párrafo.
+        btnElm.addEventListener('click', ()=>{
+            let p=document.getElementById(ID_INTERM);
+            if(!p){
+                alert('No existe el párrafo');
+                return;
+            }
+
+            p.parentNode.removeChild(p);
+            p.paren
+
+        });
+    </script>
+</body>
+</html>
