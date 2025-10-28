@@ -1,0 +1,186 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid #000;
+    background-color: white;
+}
+
+/* Cabecera y menú */
+.cabecera {
+    background-color: #8ecae6;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.menu {
+    background-color: #219ebc;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Sección principal */
+.principal {
+    display: flex;
+}
+
+/* Foto izquierda */
+.foto-izquierda {
+    width: 400px;
+    background-color: #ffb703;
+}
+
+.foto-izquierda img {
+    width: 100%;
+    display: block;
+}
+
+/* Contenedor de los 6 elementos */
+.contenido {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+}
+
+/* Estilo común de los items */
+.item {
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Colores diferentes */
+.item1 {
+    background-color: #023047;
+}
+
+.item2 {
+    background-color: #219ebc;
+}
+
+.item3 {
+    background-color: #ffb703;
+    color: #000;
+}
+
+.item4 {
+    background-color: #fb8500;
+}
+
+.item5 {
+    background-color: #8ecae6;
+    color: #000;
+}
+
+.item6 {
+    background-color: #ff006e;
+}
+
+/* Pie */
+.pie {
+    background-color: #8338ec;
+    text-align: center;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+/* --- Diseño responsivo --- */
+@media (max-width: 768px) {
+    .principal {
+        flex-direction: column;
+    }
+
+    .foto-izquierda {
+        display: none;
+        /* La imagen desaparece en móvil */
+    }
+
+    .contenido {
+        width: 100%;
+    }
+
+    .item {
+        width: 100%;
+    }
+}
+
+/* Fondo semitransparente que bloquea la interacción */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* cubre toda la pantalla */
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+    z-index: 9999;
+}
+
+/* Contenedor del cartel */
+.cookie-content {
+    background-color: #fff;
+    color: #333;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 10px 40px;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Mostrar el banner */
+.cookie-banner.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Botones */
+.cookie-buttons {
+    margin-top: 15px;
+}
+
+.cookie-buttons button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#accept-cookies {
+    background-color: #2e7d32;
+    color: white;
+}
+
+#reject-cookies {
+    background-color: #c62828;
+    color: white;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_5</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const banner = document.getElementById("cookie-banner");
+        const acceptBtn = document.getElementById("accept-cookies");
+        const rejectBtn = document.getElementById("reject-cookies");
+
+        // Verifica si ya hay una elección guardada
+        const cookieChoice = localStorage.getItem("cookieChoice");
+
+        if (!cookieChoice) {
+            banner.classList.add("show");
+        }
+
+        acceptBtn.addEventListener("click", () => {
+            localStorage.setItem("cookieChoice", "accepted");
+            banner.classList.remove("show");
+        });
+
+        rejectBtn.addEventListener("click", () => {
+            localStorage.setItem("cookieChoice", "rejected");
+            banner.classList.remove("show");
+        });
+    });
+</script>
+
+<body>
+
+    <div class="contenedor">
+        <header class="cabecera">Cabecera</header>
+        <nav class="menu">Menu</nav>
+
+        <main class="principal">
+            <div class="foto-izquierda">
+                <img src="https://placehold.co/398x398" alt="Foto lateral">
+            </div>
+            <div class="contenido">
+                <div class="item item1">1 (Texto)</div>
+                <div class="item item2">
+                    <img src="https://placehold.co/98x98" alt="">
+                    <p>Foto y Texto en esta parte</p>
+                </div>
+                <div class="item item3">
+                    <img src="https://placehold.co/98x98" alt="">
+                    <p>Foto y Texto en esta parte</p>
+                </div>
+                <div class="item item4">4 (Texto)</div>
+                <div class="item item5">5 (Texto)</div>
+                <div class="item item6">6 (Texto)</div>
+            </div>
+        </main>
+
+        <footer class="pie">Pie de página</footer>
+    </div>
+    <!-- Aviso de cookies -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>Este sitio web utiliza cookies para mejorar la experiencia del usuario.
+                <a href="#">Más información</a>
+            </p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies">Aceptar</button>
+                <button id="reject-cookies">Rechazar</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
