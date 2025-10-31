@@ -1,0 +1,6 @@
+Elabora tu currículum con BS5 poniendo especial atención al formato y color del texto. 
+Debes personalizar los colores y la tipografía (no usar la que viene por defecto en Bootstrap). 
+Utiliza diferentes clases BS5 de las siguientes páginas. 
+https://www.w3schools.com/bootstrap5/bootstrap_typography.php y
+https://www.w3schools.com/bootstrap5/bootstrap_colors.php
+Puedes reutilizar el código HTML generado en el ejercicio 2 de HTML5/CSS3.

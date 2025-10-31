@@ -1,0 +1,88 @@
+<!--Crear una página con una lista ordenada con 9 párrafos numerados (como Visual tiene
+instalado Emmet, podéis crearlos de forma automática con lorem ipsun, escribiendo
+ol>li*9>lorem y pulsando el tabulador).
+a) Pediremos al usuario que introduzca un párrafo y una posición por teclado, y que compruebe
+que el párrafo introducido ocupe esa posición, previa comprobación de:
+- Si se ha introducido un nº entre 1 y 10, el nuevo párrafo ocupará esa posición.
+- Si se ha introducido un nº que no está en el rango 1-10 o bien no se ha introducido un
+nº, se le mostrará un mensaje indicándolo y se le pedirá de nuevo el número-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_3->a</title>
+</head>
+
+<body>
+    <ol id="list">
+        <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio, nisi magni. Consequatur soluta eveniet
+            ex non molestiae aliquam, iure quam provident assumenda, incidunt perspiciatis eius in vitae! Iusto, minima
+            accusantium.</li>
+        <li>Cumque, neque praesentium nostrum magni nisi eveniet nam, dolore quae dignissimos obcaecati rerum quasi,
+            amet quo debitis temporibus reiciendis eum explicabo quam facilis expedita facere soluta error. Ipsa,
+            aperiam officia!</li>
+        <li>Recusandae tempora impedit nihil porro adipisci perspiciatis voluptatem quidem itaque laborum expedita
+            debitis ullam aliquid accusantium, harum, nesciunt hic eius. Dignissimos, dolore! Optio id iure nostrum
+            facere tempore, libero magnam!</li>
+        <li>Ea mollitia quaerat velit doloribus dolorem fuga eum deleniti animi officiis voluptas illum impedit ipsum
+            accusantium quam eveniet iste ut quo, dicta eius! Dicta pariatur temporibus error ipsam accusantium non!
+        </li>
+        <li>Animi culpa veniam expedita inventore molestiae? Porro qui quod temporibus sunt unde error. Aliquam
+            architecto amet autem modi accusantium! Quo blanditiis id neque est saepe cum facilis eius nulla
+            consequuntur.</li>
+        <li>Ullam ab voluptas asperiores molestias adipisci. Sint, odio! Corporis quos obcaecati ipsum, tenetur
+            deserunt, sequi alias vel in fuga quas adipisci, sit commodi! Iusto similique commodi saepe eos, assumenda
+            eum.</li>
+        <li>Fuga iure odio nam animi. Ad soluta quia eveniet error dignissimos at! Eveniet fuga eaque fugiat. Fugit qui
+            aspernatur incidunt mollitia corporis. Quod suscipit officia eveniet ad beatae neque odio!</li>
+        <li>In magni reiciendis deleniti quibusdam dicta, asperiores cum, dolore fuga aspernatur, animi quas sit nemo
+            saepe iusto amet nobis unde? Cupiditate quis rem veniam praesentium officia dolorum pariatur quia eum!</li>
+        <li>Reiciendis porro sit repellendus. Quae, adipisci? Sunt totam eius autem rem minima expedita alias id, sed
+            accusantium asperiores blanditiis omnis officiis laudantium distinctio quibusdam fugit nihil ab aperiam
+            ullam. Mollitia?</li>
+    </ol>
+    <p>===============</p>
+    Introduce un párrafo:<input type="text" id="parrafo"><br>
+    Introduce una posición:<input type="number" id="posicion"><br>
+    <button id="btn">Introducir</button>
+    <script>
+        let text = document.getElementById('parrafo');
+        let posicion = document.getElementById('posicion');
+        let btn=document.getElementById('btn');
+        
+        
+        btn.addEventListener('click', () => {
+            let parrafo= text.value.trim();
+            let pos= parseInt(posicion.value);
+
+            if(parrafo==''){
+                alert("Introduce un parrafo");
+                return;
+            }
+
+            if (pos>= 1 && pos <= 10) {
+
+                const newLi = document.createElement('li');
+                newLi.textContent = parrafo;
+
+                const items = document.getElementsByTagName('li');
+                const total = items.length;
+
+                if (pos > total) {
+                    list.appendChild(newLi);
+                }
+                list.insertBefore(newLi, items[pos - 1]);
+                parrafo.value = '';
+                pos.value = '';
+                
+            } else {
+                alert("Introduce una posición válida.");
+                return;
+            }
+        });
+    </script>
+</body>
+
+</html>

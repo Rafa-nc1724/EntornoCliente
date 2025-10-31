@@ -1,0 +1,21 @@
+<!--Mostrar una página con el contenido “Redirigido a google”, de forma que pasados 10
+segundo, se rediriga automáticamente a la página del buscador de Google (investigar
+setTimeout).-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_1</title>
+</head>
+<body style="background-color: black;" onload="redirigir()">
+    <p style="text-align: center; color: aqua;">Redirigidendo a google en 5 sg</p>
+    <script>
+        const redirigir=()=>{
+            setTimeout(()=>{
+                window.location.href = "https://www.google.com";
+            },'5000');
+        };
+    </script>
+</body>
+</html>
