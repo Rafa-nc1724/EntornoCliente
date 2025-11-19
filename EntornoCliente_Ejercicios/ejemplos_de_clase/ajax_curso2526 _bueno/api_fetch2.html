@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD API REST FETCH Gestión de Usuarios</title>
+</head>
+
+<body>
+    <h1>CRUD API REST FETCH</h1>
+    <section class="crud">
+        <div>
+            <h2 class="crud-title">Agregar Usuario</h2>
+            <form class="crud-form">
+                <input type="text" name="nombre" placeholder="Intrduzca Nombre" required>
+                <br>
+                <input type="text" name="telefono" placeholder="Introduzca Teléfono" required>
+                <br>
+                <input type="text" name="email" placeholder="Introduzca Email" required>
+                <br>
+                <input type="submit" value="Insertar/Actualizar">
+                <input type="hidden" name="id">
+            </form>
+        </div>
+        <div>
+            <h2>Ver Usuarios</h2>
+            <table border="1" class="crud-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <template id="crud-template">
+        <tr>
+            <td class="nombre"></td>
+            <td class="telefono"></td>
+            <td class="email"></td>
+            <td>
+                <button class="edit">Editar</button>
+                <button class="delete">Eliminar</button>
+            </td>
+        </tr>
+    </template>
+    <script src="api_fetch2.js">
+    </script>
+</body>
+
+</html>
