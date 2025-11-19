@@ -3,15 +3,73 @@ de tipo number, de forma que si la inserción del párrafo ha sido correcta, en 
 desaparezca el cuadro de texto ni el campo number, sino resetee el cuadro de texto del párrafo
 y modifique el contenido del campo number para que aparezca un valor más por si queremos
 volver a insertar otro párrafo.-->
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio_3 Apartado </title>
+    <title>Ejercicio_3->a</title>
 </head>
+
 <body>
-    
+    <ol id="list">
+        <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
+        <li>Cumque, neque praesentium nostrum magni nisi eveniet nam.</li>
+        <li>Recusandae tempora impedit nihil porro adipisci perspiciatis.</li>
+    </ol>
+
+    <p>===============</p>
+    Introduce un párrafo: <input type="text" id="parrafo"><br>
+    Introduce una posición: <input type="number" id="posicion" value="1" min="1"><br>
+    <button id="btn">Introducir</button>
+    <button id="btnC">Cancelar</button>
+
+    <script>
+        const text = document.getElementById('parrafo');
+        const posicion = document.getElementById('posicion');
+        const btn = document.getElementById('btn');
+        const btnC = document.getElementById('btnC');
+        const list = document.getElementById('list');
+
+        btn.addEventListener('click', () => {
+            const parrafo = text.value.trim();
+            let pos = parseInt(posicion.value);
+            const total = list.getElementsByTagName('li').length;
+
+            if (!parrafo) {
+                alert("Introduce un párrafo");
+                return;
+            }
+
+            if (pos < 1) {
+                alert("La posición mínima es 1");
+                return;
+            }
+
+            const newLi = document.createElement('li');
+            newLi.textContent = parrafo;
+
+            if (pos > total) {
+                list.appendChild(newLi);
+            } else {
+                const items = list.getElementsByTagName('li');
+                list.insertBefore(newLi, items[pos - 1]);
+            }
+
+            // Reset del campo de texto
+            text.value = '';
+
+            // Incrementa automáticamente la posición
+            posicion.value = pos + 1;
+        });
+
+        btnC.addEventListener('click', () => {
+            // Reset campos
+            text.value = '';
+            posicion.value = 1;
+        });
+    </script>
 </body>
+
 </html>
