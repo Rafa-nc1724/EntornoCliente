@@ -1,0 +1,98 @@
+<!--d) En este caso, añadir un cuadro de tipo number cuyo contenido será el nº de párrafos de la
+página y un botón más eliminar, en el que al hacer clic se eliminará el párrafo de orden
+correspondiente a ese número.-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_3->a</title>
+</head>
+
+<body>
+    <ol id="list">
+        <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
+        <li>Cumque, neque praesentium nostrum magni nisi eveniet nam.</li>
+        <li>Recusandae tempora impedit nihil porro adipisci perspiciatis.</li>
+    </ol>
+
+    <p>===============</p>
+    Introduce un párrafo: <input type="text" id="parrafo"><br>
+    Introduce una posición: <input type="number" id="posicion" value="1" min="1"><br>
+    Cuadro de eliminación: <input type="number" id="posDelete" value="" min="1"><br>
+    <button id="btn">Introducir</button>
+    <button id="btnC">Cancelar</button>
+    <button id="btnD">Eliminar parrafo</button>
+
+    <script>
+    const text = document.getElementById('parrafo');
+    const posicion = document.getElementById('posicion');
+    const posDelete = document.getElementById('posDelete');
+    const btn = document.getElementById('btn');
+    const btnC = document.getElementById('btnC');
+    const btnD = document.getElementById('btnD');
+    const list = document.getElementById('list');
+
+    // Mostrar número de li al cargar la página
+    document.addEventListener('DOMContentLoaded', () => {
+        const totalLi = list.getElementsByTagName('li').length;
+        posDelete.value = totalLi;
+    });
+
+    btn.addEventListener('click', () => {
+        const parrafo = text.value.trim();
+        let pos = parseInt(posicion.value);
+        const total = list.getElementsByTagName('li').length;
+
+        if (!parrafo) {
+            alert("Introduce un párrafo");
+            return;
+        }
+
+        if (pos < 1) {
+            alert("La posición mínima es 1");
+            return;
+        }
+
+        const newLi = document.createElement('li');
+        newLi.textContent = parrafo;
+
+        if (pos > total) {
+            list.appendChild(newLi);
+        } else {
+            const items = list.getElementsByTagName('li');
+            list.insertBefore(newLi, items[pos - 1]);
+        }
+
+        text.value = '';
+        posicion.value = pos + 1;
+
+        // Actualiza posDelete tras cada inserción
+        posDelete.value = list.getElementsByTagName('li').length;
+    });
+
+    btnC.addEventListener('click', () => {
+        text.value = '';
+        posicion.value = 1;
+    });
+
+    btnD.addEventListener('click', () => {
+        const posDel = parseInt(posDelete.value);
+        const items = list.getElementsByTagName('li');
+        const total = items.length;
+
+        if (posDel < 1 || posDel > total) {
+            alert("Número de párrafo no válido");
+            return;
+        }
+
+        list.removeChild(items[posDel - 1]);
+
+        // Actualiza posDelete tras cada eliminación
+        posDelete.value = list.getElementsByTagName('li').length;
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!--Crear una página que al mover el ratón sobre la página, muestre un pequeño cartel con 
+fondo amarillo que siga al cursor y muestre el texto “Aquí está el cursor”.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_4</title>
+    <style>
+        .cuadro{
+            
+            background-color: yellow;
+            padding: 10px;
+            position: absolute;
+            top: 500px;
+            left: 800px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Mueve el ratón</h2>
+    <div class="cuadro">Aquí está el cursor</div>
+    <script>
+        const cuadro=document.getElementsByTagName('div')[0];
+
+        document.addEventListener("mousemove", (event)=>{
+            
+            cuadro.style.top=event.clientY+"px";
+            cuadro.style.left=event.clientX+"px";
+            
+        });
+    </script>
+</body>
+</html>
